@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README | Retenção & Carreira</title>
+  <style>
+    :root {
+      --bg: #14171f;
+      --panel: #1f2430;
+      --panel-2: #1c1f26;
+      --text: #d1d4dc;
+      --muted: #95a5a6;
+      --line: #2d3342;
+      --orange: #f39c12;
+      --blue: #3498db;
+      --green: #27ae60;
+      --red: #e74c3c;
+      --purple: #9d00ff;
+      --code-bg: #0f1218;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(52, 152, 219, 0.16), transparent 34rem),
+        radial-gradient(circle at top right, rgba(243, 156, 18, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 42px 22px 72px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(31, 36, 48, 0.96), rgba(28, 31, 38, 0.96));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 42px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -90px;
+      top: -110px;
+      background: radial-gradient(circle, rgba(243, 156, 18, 0.28), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      color: white;
+      font-size: clamp(2.2rem, 5vw, 4.1rem);
+      letter-spacing: -0.06em;
+      line-height: 1;
+    }
+
+    .subtitle {
+      max-width: 820px;
+      margin: 0;
+      color: var(--text);
+      font-size: 1.08rem;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(52, 152, 219, 0.12);
+      border: 1px solid rgba(52, 152, 219, 0.25);
+      color: #e8f4ff;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .badge.orange {
+      background: rgba(243, 156, 18, 0.12);
+      border-color: rgba(243, 156, 18, 0.28);
+      color: #ffe4b8;
+    }
+
+    .badge.green {
+      background: rgba(39, 174, 96, 0.12);
+      border-color: rgba(39, 174, 96, 0.28);
+      color: #d7ffe8;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      grid-column: span 12;
+      background: rgba(31, 36, 48, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    }
+
+    .card.half {
+      grid-column: span 6;
+    }
+
+    .card.third {
+      grid-column: span 4;
+    }
+
+    h2 {
+      color: white;
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+      font-size: 1.55rem;
+    }
+
+    h3 {
+      color: white;
+      margin: 22px 0 8px;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    ul,
+    ol {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(20, 23, 31, 0.64);
+      color: white;
+      font-weight: 700;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .feature {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 15px;
+      background: rgba(20, 23, 31, 0.58);
+    }
+
+    .feature strong {
+      display: block;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .note {
+      border-left: 4px solid var(--blue);
+      background: rgba(52, 152, 219, 0.1);
+      padding: 14px 16px;
+      border-radius: 12px;
+      margin-top: 14px;
+    }
+
+    .warning {
+      border-left-color: var(--orange);
+      background: rgba(243, 156, 18, 0.1);
+    }
+
+    .success {
+      border-left-color: var(--green);
+      background: rgba(39, 174, 96, 0.1);
+    }
+
+    code {
+      color: #e8f4ff;
+      background: rgba(15, 18, 24, 0.82);
+      border: 1px solid rgba(45, 51, 66, 0.9);
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: #f3f7ff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      overflow: auto;
+      margin: 12px 0 0;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+    }
+
+    pre code {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      color: inherit;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 14px;
+      margin-top: 14px;
+      border: 1px solid var(--line);
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: white;
+      background: rgba(15, 18, 24, 0.86);
+      font-size: 0.92rem;
+    }
+
+    td {
+      background: rgba(20, 23, 31, 0.58);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: rgba(20, 23, 31, 0.7);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 0.84rem;
+      font-weight: 650;
+    }
+
+    .footer {
+      margin-top: 22px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        padding: 28px;
+      }
+
+      .card.half,
+      .card.third {
+        grid-column: span 12;
+      }
+
+      .feature-list,
+      .toc {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">README do Projeto</div>
+      <h1>Retenção &amp; Carreira</h1>
+      <p class="subtitle">
+        Dashboard Shiny para análise de retenção, risco de evasão, evolução de performance,
+        promoções, régua de carreira e diagnóstico de risco organizacional. Esta versão foi
+        preparada para demonstração com bases 100% sintéticas geradas em memória.
+      </p>
+
+      <div class="badges">
+        <span class="badge orange">R + Shiny</span>
+        <span class="badge">Plotly</span>
+        <span class="badge">Survival Analysis</span>
+        <span class="badge green">Dados Sintéticos</span>
+        <span class="badge">People Analytics</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card" id="sumario">
+        <h2>Sumário</h2>
+        <div class="toc">
+          <a href="#visao-geral">1. Visão geral</a>
+          <a href="#funcionalidades">2. Funcionalidades</a>
+          <a href="#dados">3. Dados sintéticos</a>
+          <a href="#estrutura">4. Estrutura do projeto</a>
+          <a href="#instalacao">5. Instalação</a>
+          <a href="#execucao">6. Execução</a>
+          <a href="#modelo">7. Modelo preditivo</a>
+          <a href="#customizacao">8. Customização</a>
+          <a href="#relatorios">9. Relatórios</a>
+          <a href="#troubleshooting">10. Troubleshooting</a>
+        </div>
+      </article>
+
+      <article class="card" id="visao-geral">
+        <h2>1. Visão geral</h2>
+        <p>
+          O projeto <strong>Retenção &amp; Carreira</strong> é uma aplicação web desenvolvida em
+          <code>R</code> com <code>shiny</code> e <code>shinydashboard</code>. O objetivo é simular
+          uma central analítica de People Analytics para acompanhar permanência, movimentações de carreira,
+          performance semestral e risco de saída de colaboradores.
+        </p>
+        <p>
+          A aplicação utiliza gráficos interativos com <code>plotly</code>, tabelas com <code>DT</code>,
+          filtros dinâmicos e modelos de sobrevivência com <code>survival</code>. A versão sintética
+          não lê arquivos reais, não usa CPFs reais e não depende de bases externas.
+        </p>
+
+        <div class="note success">
+          <strong>Importante:</strong> os dados são fictícios e servem apenas para demonstração,
+          testes visuais, validação de fluxo e apresentação do dashboard.
+        </div>
+      </article>
+
+      <article class="card" id="funcionalidades">
+        <h2>2. Funcionalidades</h2>
+        <div class="feature-list">
+          <div class="feature">
+            <strong>Simulador Preditivo</strong>
+            Busca individual de colaborador, perfil analítico, risco de evasão em 6 meses,
+            probabilidade de ficar em 12 meses, histórico de PPR, histórico de promoções e curva
+            de sobrevivência individual.
+          </div>
+          <div class="feature">
+            <strong>Visão da Empresa</strong>
+            KPIs gerais, distribuição de promoções por área, análise de admissões válidas e evolução
+            do volume de promoções por ciclo.
+          </div>
+          <div class="feature">
+            <strong>Carreira</strong>
+            Leitura de velocidade de promoção por nível, régua de carreira por dossiês e detalhamento
+            de crescimento por nível e cargo.
+          </div>
+          <div class="feature">
+            <strong>Diagnóstico de Risco</strong>
+            Comparação entre tempo até promoção e tempo até saída por cargos e áreas, ajudando a
+            identificar grupos com possível risco por demora de progressão.
+          </div>
+          <div class="feature">
+            <strong>Filtros Globais</strong>
+            Filtros por setor, área, cargo, tempo de casa, performance PPR, ciclo, liderança,
+            nível e status atual.
+          </div>
+          <div class="feature">
+            <strong>Relatórios</strong>
+            Exportação de bases consolidadas de promoções, risco por cargo e performance conforme
+            os filtros aplicados.
+          </div>
+        </div>
+      </article>
+
+      <article class="card" id="dados">
+        <h2>3. Dados sintéticos</h2>
+        <p>
+          A função <code>carregar_dados()</code> gera todos os dados necessários para o dashboard.
+          Ela substitui a leitura de arquivos externos por uma simulação completa em memória.
+        </p>
+
+        <h3>Bases geradas</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Objeto</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>perfil_clean</code></td>
+              <td>Cadastro sintético de colaboradores, com admissão, desligamento, área, cargo, status e tempo de empresa.</td>
+            </tr>
+            <tr>
+              <td><code>df_promocoes_final</code></td>
+              <td>Histórico sintético de promoções, ciclos, origem do movimento e tempo até promoção.</td>
+            </tr>
+            <tr>
+              <td><code>ppr_full</code></td>
+              <td>Histórico semestral de performance PPR por colaborador.</td>
+            </tr>
+            <tr>
+              <td><code>ppr_time_dep</code></td>
+              <td>Performance transformada em variável dependente do tempo para o modelo de sobrevivência.</td>
+            </tr>
+            <tr>
+              <td><code>dados_dossie</code></td>
+              <td>Dossiês sintéticos de carreira com cargos atuais, cargos futuros e ciclo de aprovação.</td>
+            </tr>
+            <tr>
+              <td><code>ladder_raw</code></td>
+              <td>Base tratada para régua de carreira e transições de nível.</td>
+            </tr>
+            <tr>
+              <td><code>dados_modelo_full</code></td>
+              <td>Base expandida em formato time-dependent para treino do modelo Cox.</td>
+            </tr>
+            <tr>
+              <td><code>dados_admitidos</code></td>
+              <td>Resumo mensal de admissões e saídas em até 90 dias.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note warning">
+          <strong>Privacidade:</strong> nomes, CPFs, áreas, promoções, dossiês, PPR e desligamentos
+          são simulados. Os identificadores usam padrão sintético, por exemplo <code>SYN00000001</code>.
+        </div>
+      </article>
+
+      <article class="card half" id="estrutura">
+        <h2>4. Estrutura do projeto</h2>
+        <p>Estrutura recomendada para manter o app organizado:</p>
+        <pre><code>retencao-carreira/
+├── app.R
+└── README.html
+
+        <p class="muted">
+          Como a versão atual gera tudo dentro do próprio app, não é necessário criar pasta de dados.
+        </p>
+      </article>
+
+      <article class="card half" id="instalacao">
+        <h2>5. Instalação</h2>
+        <p>Instale os pacotes necessários no R:</p>
+        <pre><code>install.packages(c(
+  "shiny",
+  "shinydashboard",
+  "plotly",
+  "shinyWidgets",
+  "tidyverse",
+  "readxl",
+  "janitor",
+  "lubridate",
+  "scales",
+  "survival",
+  "survminer",
+  "DT",
+  "broom",
+  "zoo"
+))</code></pre>
+        <p class="muted">
+          O pacote <code>readxl</code> pode permanecer instalado por compatibilidade, mesmo que a versão
+          sintética não faça leitura de planilhas.
+        </p>
+      </article>
+
+      <article class="card half" id="execucao">
+        <h2>6. Execução</h2>
+        <p>Salve o arquivo principal como <code>app.R</code> e execute:</p>
+        <pre><code>library(shiny)
+runApp("caminho/para/retencao-carreira")</code></pre>
+
+        <p>Ou, dentro da pasta do projeto:</p>
+        <pre><code>shiny::runApp()</code></pre>
+
+        <h3>Execução pelo RStudio</h3>
+        <ol>
+          <li>Abra o arquivo <code>app.R</code>.</li>
+          <li>Clique em <strong>Run App</strong>.</li>
+          <li>Aguarde o carregamento da base sintética e dos gráficos.</li>
+        </ol>
+      </article>
+
+      <article class="card half" id="modelo">
+        <h2>7. Modelo preditivo</h2>
+        <p>
+          O app usa modelo de sobrevivência do tipo Cox para estimar risco e permanência.
+          Existem dois fluxos principais:
+        </p>
+        <ul>
+          <li><code>modelo_clt</code>: considera colaboradores fora de estágio/aprendizagem.</li>
+          <li><code>modelo_estagio</code>: considera estagiários e jovens aprendizes com lógica mais simples.</li>
+        </ul>
+
+        <h3>Variáveis consideradas</h3>
+        <div class="pill-row">
+          <span class="pill">Performance PPR</span>
+          <span class="pill">Família de cargo</span>
+          <span class="pill">Nível do cargo</span>
+          <span class="pill">Quantidade de promoções</span>
+          <span class="pill">Recência de promoção</span>
+          <span class="pill">Tempo de empresa</span>
+          <span class="pill">Status de desligamento</span>
+        </div>
+
+        <div class="note">
+          O resultado deve ser interpretado como simulação analítica. Como os dados são sintéticos,
+          os riscos e probabilidades não representam pessoas reais.
+        </div>
+      </article>
+
+      <article class="card" id="customizacao">
+        <h2>8. Customização</h2>
+        <p>
+          A maior parte da configuração de dados fica dentro da função <code>carregar_dados()</code>.
+          Para alterar o comportamento da simulação, ajuste os blocos abaixo.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Parâmetro / bloco</th>
+              <th>Uso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>set.seed(...)</code></td>
+              <td>Controla a reprodutibilidade da simulação.</td>
+            </tr>
+            <tr>
+              <td><code>n_colaboradores</code></td>
+              <td>Define o volume total de colaboradores sintéticos.</td>
+            </tr>
+            <tr>
+              <td><code>areas_tech_sint</code> e <code>areas_corp_sint</code></td>
+              <td>Controlam as áreas disponíveis no filtro de setor e área.</td>
+            </tr>
+            <tr>
+              <td><code>familias_sint</code> e <code>probs_familias</code></td>
+              <td>Definem a composição da população por família de cargo.</td>
+            </tr>
+            <tr>
+              <td><code>risco_latente_sint</code></td>
+              <td>Controla a heterogeneidade de risco individual.</td>
+            </tr>
+            <tr>
+              <td><code>prob_desligamento</code></td>
+              <td>Define a propensão simulada de desligamento.</td>
+            </tr>
+            <tr>
+              <td><code>ciclos_promocao</code></td>
+              <td>Define os ciclos e volumes sintéticos de promoções.</td>
+            </tr>
+            <tr>
+              <td><code>ppr_full</code></td>
+              <td>Gera histórico de múltiplos PPR e faixas de performance.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Exemplo de ajuste rápido</h3>
+        <pre><code># Aumentar população sintética
+n_colaboradores &lt;- 2500
+
+# Alterar reprodutibilidade
+set.seed(123)
+
+# Criar ciclos de promoção mais intensos
+volume_alvo &lt;- c(30, 45, 60, 75, 90, 110)</code></pre>
+      </article>
+
+      <article class="card" id="relatorios">
+        <h2>9. Relatórios</h2>
+        <p>
+          A aba <strong>Relatórios</strong> permite exportar visões filtradas do dashboard.
+          Os botões disponíveis são:
+        </p>
+        <ul>
+          <li><strong>Exportar Promoções:</strong> histórico consolidado de promoções sintéticas.</li>
+          <li><strong>Exportar Risco por Cargo:</strong> diagnóstico consolidado de risco por família/cargo.</li>
+          <li><strong>Exportar Performance:</strong> histórico de PPR sintético.</li>
+        </ul>
+      </article>
+
+      <article class="card" id="troubleshooting">
+        <h2>10. Troubleshooting</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Problema</th>
+              <th>Possível solução</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>O app não abre no RStudio.</td>
+              <td>Confirme se o arquivo está salvo como <code>app.R</code> e se todos os pacotes foram instalados.</td>
+            </tr>
+            <tr>
+              <td>Algum gráfico aparece sem dados.</td>
+              <td>Limpe os filtros na barra lateral ou selecione mais áreas/cargos/status.</td>
+            </tr>
+            <tr>
+              <td>Erro em pacote não encontrado.</td>
+              <td>Execute novamente o bloco de instalação com <code>install.packages(...)</code>.</td>
+            </tr>
+            <tr>
+              <td>Modelo preditivo indisponível.</td>
+              <td>Verifique se há eventos suficientes de desligamento na simulação e se os filtros não reduziram demais a amostra.</td>
+            </tr>
+            <tr>
+              <td>Probabilidades muito concentradas.</td>
+              <td>Ajuste <code>risco_latente_sint</code>, <code>prob_desligamento</code>, PPR e perfis de risco na função <code>carregar_dados()</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card" id="observacoes">
+        <h2>Observações finais</h2>
+        <p>
+          Este projeto é indicado para demonstrações, prototipagem de People Analytics,
+          validação de visualizações e discussão de métricas de retenção e carreira.
+          Para uso com dados reais, seria necessário revisar governança, anonimização,
+          autorização de acesso, qualidade dos dados, validação estatística e critérios de interpretação.
+        </p>
+        <div class="note warning">
+          <strong>Atenção:</strong> os scores e probabilidades do simulador não devem ser usados
+          para decisões individuais reais quando alimentados por dados sintéticos.
+        </div>
+      </article>
+    </section>
+
+    <p class="footer">
+      README gerado para o projeto Retenção &amp; Carreira · Versão sintética demonstrativa
+    </p>
+  </main>
+</body>
+</html>
