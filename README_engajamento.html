@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>README | People Analytics Glassdoor, Benchmark e LinkedIn</title>
+  <style>
+    :root {
+      --bg: #0f1219;
+      --panel: #151a24;
+      --panel-2: #1f2430;
+      --text: #d1d4dc;
+      --muted: #94a3b8;
+      --line: #2d3342;
+      --orange: #f39c12;
+      --green: #4ade80;
+      --blue: #3498db;
+      --red: #e74c3c;
+      --purple: #9d00ff;
+      --code-bg: #090b10;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(52, 152, 219, 0.16), transparent 34rem),
+        radial-gradient(circle at top right, rgba(243, 156, 18, 0.12), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .page { max-width: 1180px; margin: 0 auto; padding: 42px 22px 72px; }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(31, 36, 48, 0.96), rgba(21, 26, 36, 0.96));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 42px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -90px;
+      top: -110px;
+      background: radial-gradient(circle, rgba(243, 156, 18, 0.28), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    h1, h2, h3 { color: #ffffff; line-height: 1.18; }
+    h1 { margin: 0 0 12px; font-size: clamp(2rem, 4vw, 3.1rem); letter-spacing: -0.04em; }
+    h2 { margin: 0 0 16px; font-size: 1.45rem; }
+    h3 { margin: 0 0 10px; font-size: 1.05rem; }
+    p { margin: 0 0 14px; }
+
+    .subtitle { max-width: 850px; color: var(--muted); font-size: 1.06rem; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .badge {
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: #e2e8f0;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 22px; }
+    .card {
+      grid-column: span 12;
+      background: rgba(21, 26, 36, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.20);
+    }
+    .half { grid-column: span 6; }
+    .third { grid-column: span 4; }
+
+    .callout {
+      border-left: 4px solid var(--orange);
+      background: rgba(243, 156, 18, 0.08);
+      padding: 15px 16px;
+      border-radius: 12px;
+      margin: 16px 0 0;
+    }
+
+    ul, ol { margin: 8px 0 0; padding-left: 21px; }
+    li { margin: 7px 0; }
+
+    code {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 2px 6px;
+      color: #ffffff;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--line);
+      color: #e5e7eb;
+      border-radius: 14px;
+      overflow-x: auto;
+      padding: 18px;
+      margin: 14px 0 0;
+      font-size: 0.92rem;
+    }
+
+    pre code { background: transparent; border: none; padding: 0; color: inherit; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; overflow: hidden; border-radius: 12px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 11px 12px; text-align: left; vertical-align: top; }
+    th { color: #ffffff; background: rgba(255,255,255,0.05); font-size: 0.9rem; }
+    td { color: var(--text); }
+
+    .footer {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    .accent-green { color: var(--green); }
+    .accent-orange { color: var(--orange); }
+    .accent-blue { color: var(--blue); }
+
+    @media (max-width: 820px) {
+      .hero { padding: 30px 24px; }
+      .half, .third { grid-column: span 12; }
+      .page { padding: 28px 14px 52px; }
+      table { display: block; overflow-x: auto; }
+    }
+</style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">README do projeto</div>
+      <h1>People Analytics Dashboard<br />Glassdoor, Benchmark e LinkedIn</h1>
+      <p class="subtitle">
+        Aplicação Shiny para acompanhamento de reputação empregadora, satisfação interna percebida,
+        comparação com concorrentes e indicadores sintéticos de audiência no LinkedIn. O projeto foi
+        preparado para rodar de forma demonstrativa, sem depender de arquivos externos de dados.
+      </p>
+      <div class="badges">
+        <span class="badge">R Shiny</span>
+        <span class="badge">bslib</span>
+        <span class="badge">Plotly</span>
+        <span class="badge">DT</span>
+        <span class="badge">Dados sintéticos</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card half">
+        <h2>Visão geral</h2>
+        <p>
+          Este dashboard consolida análises de marca empregadora e presença digital em quatro blocos:
+          avaliações no estilo Glassdoor, benchmark competitivo, visão geral de LinkedIn e demografia de
+          visitantes/seguidores. A interface usa tema escuro, cards de KPI, gráficos interativos e tabelas
+          filtráveis.
+        </p>
+        <div class="callout">
+          <strong>Importante:</strong> os dados são gerados por funções internas do próprio código. O app não
+          precisa de planilhas, CSVs, banco de dados, credenciais ou arquivos auxiliares para iniciar.
+        </div>
+      </article>
+
+      <article class="card half">
+        <h2>Estrutura recomendada da pasta</h2>
+        <p>Para publicar ou executar como app Shiny de pasta, deixe apenas o código R e este README:</p>
+        <pre><code>projeto-glassdoor-linkedin/
+├── app.R
+└── README.html</code></pre>
+        <p>
+          O arquivo enviado pode ser mantido como <code>app_glassdoor.R</code>, mas para rodar uma pasta Shiny
+          diretamente é recomendado renomeá-lo para <code>app.R</code>.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Funcionalidades principais</h2>
+        <table>
+          <thead>
+            <tr><th>Página</th><th>O que mostra</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Análise Glassdoor</strong></td>
+              <td>
+                KPIs de NPS, satisfação geral, liderança, CEO, recomendação, avaliações positivas/negativas
+                e total de avaliações. Inclui projeção da satisfação, NPS por dimensão, evolução temporal,
+                comparação entre funcionários atuais e ex-funcionários, NPS por área e tabela de dimensões.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Benchmark</strong></td>
+              <td>
+                Compara a empresa com concorrentes sintéticos por classificação geral, carreira, remuneração,
+                cultura, liderança, qualidade de vida e recomendação. Inclui radar, barras comparativas e tabela.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Visão Geral LinkedIn</strong></td>
+              <td>
+                Acompanha visualizações, visitantes únicos, seguidores, crescimento mensal, origem do tráfego,
+                acesso por dispositivo e composição por tamanho de empresa.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Demografia LinkedIn</strong></td>
+              <td>
+                Analisa visitantes e seguidores por experiência, função, tamanho de empresa e evolução mensal,
+                com botões para alternar entre públicos.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card half">
+        <h2>Dados sintéticos</h2>
+        <p>As bases são criadas em memória durante a inicialização do app. As principais funções são:</p>
+        <ul>
+          <li><code>gerar_dados_glassdoor()</code>: avaliações, cargos, status, notas por dimensão e sentimento.</li>
+          <li><code>gerar_dados_concorrentes()</code>: tabela de benchmark com empresas anonimizadas.</li>
+          <li><code>gerar_dados_linkedin_visao_geral()</code>: seguidores, novos seguidores e engajamentos mensais.</li>
+          <li><code>gerar_dados_linkedin_visitantes_serie()</code>: visualizações, visitantes únicos e dispositivo.</li>
+          <li><code>gerar_demografia_linkedin()</code>: funções, localidades, tamanhos de empresa, experiência e setores.</li>
+          <li><code>load_all_data()</code>: orquestra a geração e prepara os objetos usados no dashboard.</li>
+        </ul>
+      </article>
+
+      <article class="card half">
+        <h2>Filtros disponíveis</h2>
+        <ul>
+          <li><strong>Status:</strong> todos, atual ou ex-funcionário.</li>
+          <li><strong>Sentimento:</strong> todos, positivo, neutro ou negativo.</li>
+          <li><strong>Ano:</strong> permite restringir as avaliações por ano.</li>
+          <li><strong>Demografia LinkedIn:</strong> filtros próprios de ano e mês nas visualizações demográficas.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Instalação dos pacotes</h2>
+        <p>Execute uma vez no R antes de abrir o app:</p>
+        <pre><code>install.packages(c(
+  "shiny", "bslib", "ggplot2", "dplyr", "lubridate", "readr", "readxl",
+  "tidyr", "stringr", "plotly", "shinyWidgets", "scales", "forecast",
+  "DT", "tm", "RColorBrewer", "purrr", "zoo", "forcats", "janitor"
+))</code></pre>
+      </article>
+
+      <article class="card half">
+        <h2>Como executar</h2>
+        <ol>
+          <li>Crie uma pasta para o projeto.</li>
+          <li>Coloque o código R na pasta e renomeie para <code>app.R</code>.</li>
+          <li>Coloque este arquivo como <code>README.html</code> na mesma pasta.</li>
+          <li>Abra o R nessa pasta e execute:</li>
+        </ol>
+        <pre><code>shiny::runApp(".")</code></pre>
+        <p>Também é possível abrir o arquivo no RStudio e clicar em <strong>Run App</strong>.</p>
+      </article>
+
+      <article class="card half">
+        <h2>Customização rápida</h2>
+        <ul>
+          <li>Altere o nome exibido no cabeçalho procurando por <code>EMPRESA 1</code>.</li>
+          <li>Ajuste o volume de avaliações em <code>gerar_dados_glassdoor(n = 500)</code>.</li>
+          <li>Modifique cargos, áreas e dimensões dentro das funções de geração sintética.</li>
+          <li>Troque metas e cores dentro das funções auxiliares de KPI, se necessário.</li>
+        </ul>
+      </article>
+
+      <article class="card third">
+        <h2>Indicadores Glassdoor</h2>
+        <ul>
+          <li>NPS/e-NPS</li>
+          <li>Satisfação geral</li>
+          <li>Alta liderança</li>
+          <li>Aprovação CEO</li>
+          <li>Recomendação</li>
+        </ul>
+      </article>
+
+      <article class="card third">
+        <h2>Indicadores LinkedIn</h2>
+        <ul>
+          <li>Total de seguidores</li>
+          <li>Novos seguidores</li>
+          <li>Visualizações</li>
+          <li>Visitantes únicos</li>
+          <li>Tráfego institucional/vagas</li>
+        </ul>
+      </article>
+
+      <article class="card third">
+        <h2>Tecnologias</h2>
+        <ul>
+          <li><code>shiny</code> e <code>bslib</code> para a interface.</li>
+          <li><code>plotly</code> para gráficos interativos.</li>
+          <li><code>DT</code> para tabelas.</li>
+          <li><code>dplyr</code>, <code>tidyr</code> e <code>lubridate</code> para tratamento.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Troubleshooting</h2>
+        <table>
+          <thead><tr><th>Problema</th><th>Como resolver</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Erro “there is no package called ...”</td>
+              <td>Instale o pacote indicado ou rode novamente o bloco de instalação.</td>
+            </tr>
+            <tr>
+              <td>Caracteres acentuados aparecem incorretos</td>
+              <td>Salve o arquivo R como UTF-8. Em alguns ambientes Windows, a localidade pode exigir ajuste manual.</td>
+            </tr>
+            <tr>
+              <td>O app não abre ao rodar a pasta</td>
+              <td>Confirme que o arquivo principal se chama <code>app.R</code> e que ele termina com <code>shinyApp(ui = ui, server = server)</code>.</td>
+            </tr>
+            <tr>
+              <td>Gráficos vazios</td>
+              <td>Verifique se os filtros selecionados não restringiram demais a amostra sintética.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>Privacidade e uso</h2>
+        <p>
+          Este projeto é demonstrativo. Os nomes de empresas, cargos, avaliações, seguidores, visitantes e
+          indicadores são fictícios ou anonimizados. Nenhum dado real precisa ser usado para executar o app.
+        </p>
+      </article>
+    </section>
+
+    <p class="footer">README gerado para distribuição do projeto com apenas <code>app.R</code> e <code>README.html</code>.</p>
+  </main>
+</body>
+</html>
